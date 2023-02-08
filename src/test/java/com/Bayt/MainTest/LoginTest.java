@@ -22,7 +22,7 @@ public class LoginTest extends Base {
 
 	@AfterMethod
 	public void Clouser() {
-		// driver.quit();
+		 driver.quit();
 	}
 
 	@Test(dataProvider = "ApplyPage", dataProviderClass = ExcelDataProvider.class)

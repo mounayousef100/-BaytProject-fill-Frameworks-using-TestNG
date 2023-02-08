@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.Bayt.RegisterandApplyTest.CheekEmailRlreadyTest">
+      <class name="com.Bayt.MainTest.MainTest">
         <methods>
+          <include name="Search"/>
           <include name="OpenPage"/>
-          <include name="EasyApply"/>
           <include name="Clouser"/>
         </methods>
-      </class> <!-- com.Bayt.RegisterandApplyTest.CheekEmailRlreadyTest -->
+      </class> <!-- com.Bayt.MainTest.MainTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

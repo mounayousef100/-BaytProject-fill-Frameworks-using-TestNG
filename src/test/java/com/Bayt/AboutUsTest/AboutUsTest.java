@@ -22,7 +22,7 @@ public class AboutUsTest extends Base {
 
 	@AfterMethod
 	public void Clouser() {
-		// driver.quit();
+		 driver.quit();
 	}
 
 	@Test

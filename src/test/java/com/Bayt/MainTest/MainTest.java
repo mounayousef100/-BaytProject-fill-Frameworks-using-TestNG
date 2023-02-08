@@ -21,11 +21,11 @@ public class MainTest extends Base {
 
 	@AfterMethod
 	public void Clouser() {
-		// driver.quit();
+		 driver.quit();
 	}
 
 	@Test
-	public void EasyApply() throws Throwable {
+	public void Search() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		mainPage = new MainPage(driver);
 		mainPage.SearchJobs();

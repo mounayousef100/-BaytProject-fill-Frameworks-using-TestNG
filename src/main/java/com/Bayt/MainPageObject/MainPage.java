@@ -7,11 +7,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
+
 import com.Bayt.ActionDriver.Action;
+import com.Bayt.Base.Base;
 
 public class MainPage {
 	public WebDriver driver;
 	Action action = new Action();
+	SoftAssert mysoft = new SoftAssert();
 
 	public MainPage(WebDriver driver) {
 		this.driver = driver;
@@ -27,23 +31,24 @@ public class MainPage {
 	@FindBy(xpath = "//div[@class='jb-descr m10t t-small']")
 	private List<WebElement> Search;
 
-	public void SearchJobs() throws Throwable{
-     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-     action.removeCSSStyle();
-     action.fluentWait(driver, jobTitle, 10);
-     action.typestring(jobTitle,"quality control engineer");
-     jobTitle.sendKeys(Keys.ENTER);
-	 action.fluentWait(driver,ButtonSearch, 10);
-	 action.JSClick(driver, ButtonSearch);
-	 Thread.sleep(5000);
-   //  action.fluentWait(driver, Search, 10);
-	 for( int i = 0; i<Search.size();i++) {
-		 String result = Search.get(i).getText(); 
-	 Object jobTitle = "quality" ;
-	System.out.println( result.contains((CharSequence) jobTitle));
-	 }
-	// System.out.println( "result//////////////" );
-	 
-	 }
+	public void SearchJobs() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		action.removeCSSStyle();
+		Base.takeScreenshot(null, driver);
+		action.fluentWait(driver, jobTitle, 10);
+		action.typestring(jobTitle, "quality control engineer");
+		jobTitle.sendKeys(Keys.ENTER);
+		action.fluentWait(driver, ButtonSearch, 10);
+		action.JSClick(driver, ButtonSearch);
+		Thread.sleep(5000);
+		Base.takeScreenshot(null, driver);
+		for (int i = 0; i < Search.size(); i++) {
+			String result = Search.get(i).getText();
+			boolean checkSearch = result.contains("quality");
+			mysoft.assertEquals(checkSearch, true, "check Search successfully");
+			mysoft.assertAll();
+		}
+
+	}
 
 }

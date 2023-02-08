@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Bayt.RegisterandApplyTest.ApplyTest">
+      <class name="com.Bayt.MainTest.MainTest">
         <methods>
-          <include name="EasyApply" invocation-numbers="0"/>
+          <include name="Search"/>
           <include name="OpenPage"/>
           <include name="Clouser"/>
         </methods>
-      </class> <!-- com.Bayt.RegisterandApplyTest.ApplyTest -->
+      </class> <!-- com.Bayt.MainTest.MainTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

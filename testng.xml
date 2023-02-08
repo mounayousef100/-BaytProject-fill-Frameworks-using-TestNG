@@ -7,11 +7,10 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="com.Bayt.MainTest.MainTest"/>
-         <class name="com.Bayt.AboutUsTest.AboutUsTest"/>
-            <class name="com.Bayt.MainTest.LoginTest"/>
-               <class name="com.Bayt.RegisterandApplyTest.ApplyTest"/>
-                  <class name="com.Bayt.RegisterandApplyTest.CheekEmailRlreadyTest"/>
-         
+      <class name="com.Bayt.AboutUsTest.AboutUsTest"/>
+      <class name="com.Bayt.MainTest.LoginTest"/>
+      <class name="com.Bayt.RegisterandApplyTest.ApplyTest"/>
+      <class name="com.Bayt.RegisterandApplyTest.CheekEmailRlreadyTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
