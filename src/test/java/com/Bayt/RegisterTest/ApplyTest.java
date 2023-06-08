@@ -1,7 +1,5 @@
-package com.Bayt.RegisterandApplyTest;
-
+package com.Bayt.RegisterTest;
 import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -9,14 +7,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.Bayt.Base.Base;
 import com.Bayt.Dataprovider.ExcelDataProvider;
-import com.Bayt.RegisterandApplyPageObject.ApplyPage;
+import com.Bayt.RegisterPageObject.ApplyPage;
 
 public class ApplyTest extends Base {
 	public WebDriver driver;
-	Random Random = new Random();
-	int index = Random.nextInt(6);
-	int upperbound = 1000;
-	int int_random = Random.nextInt(upperbound);
 	private ApplyPage applyPage;
 
 	@BeforeMethod
@@ -27,7 +21,7 @@ public class ApplyTest extends Base {
 
 	@AfterMethod
 	public void Clouser() {
-		 driver.quit();
+	   driver.quit();
 	}
 
 	@Test(dataProvider = "ApplyPage", dataProviderClass = ExcelDataProvider.class)

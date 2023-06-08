@@ -1,8 +1,5 @@
-package com.Bayt.RegisterandApplyPageObject;
-
-import java.io.IOException;
+package com.Bayt.RegisterPageObject;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.Bayt.ActionDriver.Action;
-import com.Bayt.Base.Base;
 import com.github.javafaker.Faker;
 
 public class ApplyPage {
@@ -24,10 +20,10 @@ public class ApplyPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "/html/body/section[4]/div/div[1]/div[1]/div/div/a")
+	@FindBy(xpath = "/html/body/section[3]/div/div[1]/div[1]/div/div/a/span[1]")
 	private WebElement Clickjobs;
 
-	@FindBy(xpath = "//a[@class='btn is-small']")
+	@FindBy(xpath = "//li[2]//div[1]//div[3]//div[2]//a[1]")
 	private WebElement EasyAplly;
 
 	@FindBy(xpath = "//input[@id='JsApplicantRegisterForm_firstName']")
@@ -48,7 +44,7 @@ public class ApplyPage {
 	@FindBy(xpath = "//*[@id=\"JsApplicantRegisterForm_mobPhone\"]")
 	private WebElement PhoneNumberField;
 
-	@FindBy(xpath = "/html[1]/body[1]/section[1]/div[1]/div[1]/div[1]/div[1]/section[1]/form[1]/footer[1]")
+	@FindBy(xpath = "//*[@id=\"register\"]")
 	private WebElement ApplyNow;
 
 	@FindBy(xpath = "//button[@id='register']")
@@ -114,7 +110,7 @@ public class ApplyPage {
 	@FindBy(xpath = "//input[@id='EducationForm_educationCountry__r']")
 	private WebElement ChooseCountry;
 
-	@FindBy(xpath = "//*[@id=\"EducationForm_educationCity__r\"]")
+	@FindBy(id = "EducationForm_educationCity__r")
 	private WebElement ChoosecCty;
 
 	@FindBy(xpath = "//input[@id='EducationForm_major']")
@@ -135,31 +131,40 @@ public class ApplyPage {
 	@FindBy(xpath = "//*[@id=\"yw0\"]/footer/div/input")
 	private WebElement SaveBuuton;
 
-	public void Aplly() throws InterruptedException, IOException {
+	public void Aplly() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Thread.sleep(3000);
 		action.scrollByVisibilityOfElement(driver, Clickjobs);
 		Thread.sleep(2000);
-		Base.takeScreenshot(null, driver);
-		action.click(driver, Clickjobs);
-		Base.takeScreenshot(null, driver);
-		action.click(driver, EasyAplly);
+		action.JSClick(driver, Clickjobs);
+		action.JSClick(driver, EasyAplly);
 		driver.navigate().refresh();
 		String firstName = faker.name().firstName();
+
 		action.typestring(FirstNameField, firstName);
+
 		String LirstName = faker.name().lastName();
+
 		action.typestring(LastNameField, LirstName);
+
 		String Emailaddress = firstName.toLowerCase() + LirstName.toLowerCase() + "@gmail.com";
+
 		action.typestring(EmailaddressField, Emailaddress);
+
 		String Password = faker.number().toString();
+
 		action.typestring(PasswordField, Password);
+
 		String PhoneNumber = "079" + faker.number().numberBetween(1000000, 2000000);
+
 		action.typestring(PhoneNumberField, PhoneNumber);
+
 		action.selectBySendkeys("Jordan", MobPhoneAreaCode);
+
 		MobPhoneAreaCode.sendKeys(Keys.ENTER);
-		action.click(driver, ApplyNow);
+		Thread.sleep(5000);
+		action.JSClick(driver, ApplyNow);
 		Thread.sleep(3000);
-		Base.takeScreenshot(null, driver);
 
 	}
 
@@ -167,10 +172,18 @@ public class ApplyPage {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		action.removeCSSStyle();
 		Thread.sleep(2000);
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("document.getElementById('personalInformationForm_birthDay').removeAttribute('style')");
-		action.selectByIndex(Day, 1);
-		Thread.sleep(2000);
+		
+		
+		JavascriptExecutor jse9 = (JavascriptExecutor) driver;
+		jse9.executeScript("document.getElementById('personalInformationForm_birthDay').removeAttribute('style')");
+		
+		
+		
+		
+		String randBirthDDay = "" + faker.number().numberBetween(1, 31);
+		action.selectBySendkeys(randBirthDDay, Day);
+		Day.sendKeys(Keys.ENTER);
+
 		action.selectBySendkeys("January", Month);
 		Month.sendKeys(Keys.ENTER);
 		Thread.sleep(4000);
@@ -180,12 +193,23 @@ public class ApplyPage {
 		action.click(driver, Female);
 		Thread.sleep(4000);
 		JavascriptExecutor jse2 = (JavascriptExecutor) driver;
-		jse2.executeScript(
-				"document.getElementById('personalInformationForm_nationalityCitizenAc').removeAttribute('style')");
+		jse2.executeScript("document.getElementById('personalInformationForm_nationalityCitizenAc').removeAttribute('style')");
 		action.selectByIndex(Yournationality, 2);
+
+		if (Yournationality.getText().equals("Jordan")) {
+
+			System.out.println("Yournationality : Jordan");
+
+		} else {
+			Thread.sleep(2000);
+			action.selectBySendkeys("No Visa", VisaStatus);
+
+			VisaStatus.sendKeys(Keys.ENTER);
+		}
+
 		Thread.sleep(2000);
-		action.selectBySendkeys("Citizen", VisaStatus);
-		VisaStatus.sendKeys(Keys.ENTER);
+		//action.selectBySendkeys("Citizen", VisaStatus);
+	//	VisaStatus.sendKeys(Keys.ENTER);
 	}
 
 	public void Addexperience() throws Throwable {
@@ -249,8 +273,6 @@ public class ApplyPage {
 		action.selectBySendkeys("Mid Career", JobLevel);
 		JobLevel.sendKeys(Keys.ENTER);
 		action.JSClick(driver, SaveBuuton);
-		Base.takeScreenshot(null, driver);
-
 	}
 
 }

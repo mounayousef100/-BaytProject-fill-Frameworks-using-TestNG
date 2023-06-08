@@ -1,0 +1,95 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "API Server",
+    "description" : "",
+    "termsOfService" : "",
+    "contact" : {
+      "name" : "",
+      "url" : "",
+      "email" : "api@hotmail.com"
+    },
+    "license" : {
+      "name" : "",
+      "url" : ""
+    },
+    "version" : "1.0",
+    "x-lxrinfo" : {
+      "environment" : "",
+      "refuuid" : "",
+      "timestamp" : ""
+    }
+  },
+  "servers" : [ {
+    "url" : "{protocol}://{environment}.example.com",
+    "description" : "",
+    "variables" : {
+      "environment" : {
+        "description" : "",
+        "default" : "files"
+      },
+      "protocol" : {
+        "description" : "HTTPS server as default",
+        "default" : "https",
+        "enum" : [ "http", "https" ]
+      }
+    }
+  }, {
+    "url" : " https://echo.example.com",
+    "description" : ""
+  } ],
+  "paths" : {
+    "/files" : {
+      "summary" : "File upload and download operations",
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "x-lxrgen" : {
+          "library" : "",
+          "srclibrary" : "",
+          "srcfile" : "",
+          "object" : ""
+        }
+      },
+      "servers" : [ {
+        "url" : "{protocol}://{environment}.example.com",
+        "description" : "",
+        "variables" : {
+          "environment" : {
+            "description" : "",
+            "default" : "files"
+          },
+          "protocol" : {
+            "description" : "HTTPS server as default",
+            "default" : "https",
+            "enum" : [ "http", "https" ]
+          }
+        }
+      } ]
+    },
+    "/ping" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "servers" : [ {
+          "url" : " https://echo.example.com",
+          "description" : ""
+        } ],
+        "x-lxrgen" : {
+          "library" : "",
+          "srclibrary" : "",
+          "srcfile" : "",
+          "object" : ""
+        }
+      },
+      "servers" : [ ]
+    }
+  },
+  "components" : { }
+}

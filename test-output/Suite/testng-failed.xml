@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.Bayt.MainTest.MainTest">
+      <class name="com.Bayt.HomeTest.PeopleWhoFoundJobsTest">
         <methods>
-          <include name="Search"/>
-          <include name="OpenPage"/>
           <include name="Clouser"/>
+          <include name="FindJobsTest"/>
+          <include name="OpenPage"/>
         </methods>
-      </class> <!-- com.Bayt.MainTest.MainTest -->
+      </class> <!-- com.Bayt.HomeTest.PeopleWhoFoundJobsTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

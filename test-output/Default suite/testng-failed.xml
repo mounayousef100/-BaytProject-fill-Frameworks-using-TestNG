@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Bayt.MainTest.MainTest">
+      <class name="com.Bayt.HomeTest.FindJobsinJordanTest">
         <methods>
-          <include name="Search"/>
+          <include name="FindJobsTest"/>
           <include name="OpenPage"/>
           <include name="Clouser"/>
         </methods>
-      </class> <!-- com.Bayt.MainTest.MainTest -->
+      </class> <!-- com.Bayt.HomeTest.FindJobsinJordanTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

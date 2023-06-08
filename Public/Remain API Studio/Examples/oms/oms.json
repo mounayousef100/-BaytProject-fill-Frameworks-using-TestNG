@@ -1,0 +1,750 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "OMS",
+    "contact" : {
+      "name" : "Remain B.V. (RemainSoftware.com)",
+      "url" : "remainsoftware.com",
+      "email" : "info@remainsoftware.com"
+    },
+    "license" : {
+      "name" : "MIT"
+    },
+    "version" : "1.0.0",
+    "x-lxrinfo" : { }
+  },
+  "servers" : [ {
+    "url" : "http://{host}/tdomsrest/srv/api/v1.0",
+    "variables" : {
+      "host" : {
+        "default" : "localhost:45036"
+      }
+    }
+  } ],
+  "paths" : {
+    "/taskservice/task/{session}" : {
+      "post" : {
+        "tags" : [ "Task" ],
+        "summary" : "Creare a new task",
+        "description" : "Creare a new OMS task",
+        "operationId" : "create_task",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/TaskData"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/task"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taskservice/request/{session}" : {
+      "post" : {
+        "tags" : [ "Request" ],
+        "summary" : "Creare a new request",
+        "description" : "Creare a new OMS request",
+        "operationId" : "create_request",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/RequestData"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/requestDescription"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taskservice/link/{session}" : {
+      "summary" : "Create link",
+      "post" : {
+        "tags" : [ "Link" ],
+        "summary" : "Creare a new link",
+        "description" : "Creare a new OMS link",
+        "operationId" : "create_link",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/LinkData"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/link"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/taskservice/request/{session}/{application}/{request}" : {
+      "get" : {
+        "tags" : [ "Request" ],
+        "summary" : "Get request",
+        "operationId" : "get_request",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/application"
+        }, {
+          "name" : "request",
+          "in" : "path",
+          "description" : "The request",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/request"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Request" ],
+        "summary" : "Update an OMS request",
+        "operationId" : "put_request",
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/RequestData"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/taskservice/task/{session}/{application}/{task}" : {
+      "get" : {
+        "tags" : [ "Task" ],
+        "summary" : "Get task",
+        "operationId" : "get_task",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/application"
+        }, {
+          "name" : "task",
+          "in" : "path",
+          "description" : "The task",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/task"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Task" ],
+        "summary" : "Update task",
+        "operationId" : "put_task",
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/TaskData"
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/taskservice/request/description/{session}/{application}/{request}" : {
+      "summary" : "Update a request description",
+      "get" : {
+        "tags" : [ "Request" ],
+        "summary" : "Get OMS request description",
+        "operationId" : "get_request_description",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/application"
+        }, {
+          "name" : "request",
+          "in" : "path",
+          "description" : "The request",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/requestDescription"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Request" ],
+        "summary" : "Update an OMS request description",
+        "operationId" : "put_request_description",
+        "requestBody" : {
+          "description" : "Request description to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestDescription"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/taskservice/task/description/{session}/{application}/{task}" : {
+      "summary" : "Update an OMS task description",
+      "get" : {
+        "tags" : [ "Request" ],
+        "summary" : "Get OMS task description",
+        "operationId" : "get_task_description",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/application"
+        }, {
+          "name" : "task",
+          "in" : "path",
+          "description" : "The task",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/requestDescription"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Request" ],
+        "summary" : "Update a task description",
+        "operationId" : "put_request_description_COPY",
+        "requestBody" : {
+          "description" : "Request description to update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestDescription"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/loginservice/login/{system_name}" : {
+      "summary" : "Login service",
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "Post to request a login",
+        "operationId" : "login",
+        "parameters" : [ {
+          "name" : "system_name",
+          "in" : "path",
+          "description" : "The name of the system ",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/login"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loginservice/logout/{session}" : {
+      "summary" : "The session",
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "Post to request a logout",
+        "operationId" : "logout",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/session"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/login"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "result" : {
+        "type" : "object",
+        "properties" : {
+          "message" : {
+            "type" : "string",
+            "description" : "The result message"
+          },
+          "method" : {
+            "type" : "string",
+            "description" : "The result method"
+          },
+          "severity" : {
+            "type" : "string",
+            "description" : "The result severity"
+          },
+          "stackTrace" : {
+            "type" : "string",
+            "description" : "The result error stack trace"
+          }
+        }
+      },
+      "task" : {
+        "type" : "object",
+        "properties" : {
+          "applicationCode" : {
+            "type" : "string",
+            "description" : "The  application code"
+          },
+          "developmentExitCount" : {
+            "type" : "string",
+            "description" : "The  development exit count"
+          },
+          "expectedCompletionDate" : {
+            "type" : "string",
+            "description" : "The  expected completion date"
+          },
+          "expectedDevEndDate" : {
+            "type" : "string",
+            "description" : "The expected development end date"
+          },
+          "expectedNumberOfHours" : {
+            "type" : "string",
+            "description" : "The  expected number of hours"
+          },
+          "expectedStartDate" : {
+            "type" : "string",
+            "description" : "The  expected start date"
+          },
+          "fixNumber" : {
+            "type" : "string",
+            "description" : "The task  number"
+          },
+          "fixStatus" : {
+            "type" : "string",
+            "description" : "The  task status"
+          },
+          "fixType" : {
+            "type" : "string",
+            "description" : "The  task type"
+          },
+          "freeUserSpace" : {
+            "type" : "string",
+            "description" : "The free user space"
+          },
+          "host" : {
+            "type" : "string",
+            "description" : "The hot"
+          },
+          "numberOfRatificationGrps" : {
+            "type" : "string",
+            "description" : "The number of ratification groups"
+          },
+          "pathCode" : {
+            "type" : "string",
+            "description" : "The path code"
+          },
+          "priorityNumeric" : {
+            "type" : "string",
+            "description" : "The priority as numeric value"
+          },
+          "programmer" : {
+            "type" : "string",
+            "description" : "The programmer"
+          },
+          "ratificationCount" : {
+            "type" : "string",
+            "description" : "The ratification count"
+          },
+          "realizedCompletionDate" : {
+            "type" : "string",
+            "description" : "The realized completion date"
+          },
+          "realizedDevEndDate" : {
+            "type" : "string",
+            "description" : "The realized development end date"
+          },
+          "realizedNumberOfHours" : {
+            "type" : "string",
+            "description" : "The realized number of hours"
+          },
+          "realizedStartDate" : {
+            "type" : "string",
+            "description" : "The realized start date"
+          },
+          "reasonCode" : {
+            "type" : "string",
+            "description" : "The  reason code"
+          },
+          "rejectedIndicator" : {
+            "type" : "string",
+            "description" : "The rejection indicator"
+          },
+          "release" : {
+            "type" : "string",
+            "description" : "The release"
+          },
+          "shortFixDescription" : {
+            "type" : "string",
+            "description" : "The short task description"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/result"
+        } ]
+      },
+      "request" : {
+        "type" : "object",
+        "properties" : {
+          "applicationCode" : {
+            "type" : "string",
+            "description" : "The application code"
+          },
+          "distributedUser" : {
+            "type" : "string",
+            "description" : "The distributed user"
+          },
+          "environmentCode" : {
+            "type" : "string",
+            "description" : "The environment code"
+          },
+          "freeUserSpace" : {
+            "type" : "string",
+            "description" : "The free user space"
+          },
+          "host" : {
+            "type" : "string",
+            "description" : "The host"
+          },
+          "incomeDate" : {
+            "type" : "string",
+            "description" : "The entry date"
+          },
+          "incomeTime" : {
+            "type" : "string",
+            "description" : "The entry time"
+          },
+          "numberOfRatificationGrps" : {
+            "type" : "string",
+            "description" : "The number of ratification groups"
+          },
+          "priorityNumeric" : {
+            "type" : "string",
+            "description" : "The priority as numeric value"
+          },
+          "ratificationCount" : {
+            "type" : "string",
+            "description" : "The ratification count"
+          },
+          "realizedCompletionDate" : {
+            "type" : "string",
+            "description" : "The realized completion"
+          },
+          "reasonCode" : {
+            "type" : "string",
+            "description" : "The reason code"
+          },
+          "rejectedIndicator" : {
+            "type" : "string",
+            "description" : "The rejection indicator"
+          },
+          "requestType" : {
+            "type" : "string",
+            "description" : "The request type"
+          },
+          "requestedCompletionDate" : {
+            "type" : "string",
+            "description" : "The requested completion date"
+          },
+          "shortRequestDescription" : {
+            "type" : "string",
+            "description" : "The short request description"
+          },
+          "telephoneNumber" : {
+            "type" : "string",
+            "description" : "Telephone number"
+          },
+          "user" : {
+            "type" : "string",
+            "description" : "User"
+          },
+          "userAddress" : {
+            "type" : "string",
+            "description" : "User address"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/result"
+        } ]
+      },
+      "link" : {
+        "type" : "object",
+        "properties" : {
+          "applicationCode" : {
+            "type" : "string",
+            "description" : "The application code"
+          },
+          "changeDate" : {
+            "type" : "string",
+            "description" : "The change date"
+          },
+          "changeTime" : {
+            "type" : "string",
+            "description" : "The change time"
+          },
+          "changedBy" : {
+            "type" : "string",
+            "description" : "The changer"
+          },
+          "createdBy" : {
+            "type" : "string",
+            "description" : "The creator"
+          },
+          "creationDate" : {
+            "type" : "string",
+            "description" : "The creation date"
+          },
+          "creationTime" : {
+            "type" : "string",
+            "description" : "The creation time "
+          },
+          "productId" : {
+            "type" : "string",
+            "description" : "The product ID"
+          },
+          "requestNumber" : {
+            "type" : "string",
+            "description" : "The request number"
+          },
+          "taskNumber" : {
+            "type" : "string",
+            "description" : "The task number"
+          },
+          "urlToItem" : {
+            "type" : "string",
+            "description" : "The item URL "
+          },
+          "urlToProduct" : {
+            "type" : "string",
+            "description" : "The product URL"
+          },
+          "uuid" : {
+            "type" : "string",
+            "description" : "The UUID"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/result"
+        } ]
+      },
+      "taskDescription" : {
+        "type" : "object",
+        "properties" : {
+          "fixNumber" : {
+            "type" : "string",
+            "description" : "the task number"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/description"
+        } ]
+      },
+      "requestDescription" : {
+        "type" : "object",
+        "properties" : {
+          "requestNumber" : {
+            "type" : "string",
+            "description" : "The request number"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/description"
+        } ]
+      },
+      "description" : {
+        "type" : "object",
+        "properties" : {
+          "applicationCode" : {
+            "type" : "string",
+            "description" : "The application code"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description"
+          },
+          "host" : {
+            "type" : "string",
+            "description" : "The host"
+          }
+        }
+      },
+      "login" : {
+        "type" : "object",
+        "properties" : {
+          "session" : {
+            "type" : "string",
+            "description" : "The loging session"
+          }
+        },
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/result"
+        } ]
+      }
+    },
+    "parameters" : {
+      "session" : {
+        "name" : "session",
+        "in" : "path",
+        "description" : "The OMSystem session key",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "application" : {
+        "name" : "application",
+        "in" : "path",
+        "description" : "The application",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "requestBodies" : {
+      "RequestData" : {
+        "description" : "The data of the OMS request to create or update",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/request"
+            }
+          }
+        },
+        "required" : true
+      },
+      "TaskData" : {
+        "description" : "The data of the OMS task to create or update",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/task"
+            }
+          }
+        },
+        "required" : true
+      },
+      "LinkData" : {
+        "description" : "The data of the OMS link to create or update",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/link"
+            }
+          }
+        },
+        "required" : true
+      }
+    }
+  }
+}

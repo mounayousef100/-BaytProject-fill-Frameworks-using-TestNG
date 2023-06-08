@@ -1,0 +1,411 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Blame",
+    "termsOfService" : "some URL"
+  },
+  "servers" : [ {
+    "url" : "/"
+  } ],
+  "paths" : {
+    "/orders/{order_id}" : {
+      "summary" : "Get the order with the given order id",
+      "get" : {
+        "operationId" : "GetBooks",
+        "parameters" : [ {
+          "name" : "control",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "issueYr",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "seq",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayOfArrays"
+                }
+              }
+            }
+          },
+          "512" : {
+            "description" : "Unassigned",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayWithNoItemsType"
+                }
+              }
+            }
+          },
+          "308" : {
+            "description" : "Permanent Redirect",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/With#Inva!idName"
+                }
+              }
+            }
+          }
+        },
+        "callbacks" : { },
+        "x-generate" : {
+          "suffix" : "2",
+          "generate" : "true"
+        }
+      },
+      "put" : {
+        "operationId" : "PutOrder",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Cool"
+                }
+              }
+            }
+          }
+        },
+        "callbacks" : { },
+        "x-generate" : {
+          "suffix" : "3",
+          "generate" : "true"
+        }
+      },
+      "post" : {
+        "summary" : "Create order",
+        "operationId" : "CreateOrder",
+        "parameters" : [ {
+          "name" : "order",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvalidRefInProperties"
+              }
+            }
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Post Method",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/InvalidRefInProperties"
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IncompleteArrayType"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request from Client GET request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayOfArrays"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IncompleteArrayType"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected error occured"
+          },
+          "254" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ArrayWithNoItemsType"
+                }
+              }
+            }
+          }
+        },
+        "callbacks" : { },
+        "x-generate" : {
+          "suffix" : "1",
+          "generate" : "true"
+        }
+      },
+      "patch" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/{id}/inv$ lid" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      },
+      "put" : {
+        "parameters" : [ {
+          "name" : "latitude",
+          "in" : "query",
+          "description" : "The latitude",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "latitude",
+          "in" : "query",
+          "description" : "The latitude",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      },
+      "post" : {
+        "parameters" : [ {
+          "name" : "count",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      }
+    },
+    "/order/{name}" : {
+      "get" : {
+        "requestBody" : {
+          "content" : { }
+        },
+        "responses" : {
+          "109" : {
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "callbacks" : { }
+      },
+      "put" : {
+        "requestBody" : { },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      },
+      "post" : {
+        "parameters" : [ {
+          "name" : "order_nr",
+          "in" : "path",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false
+        } ],
+        "requestBody" : {
+          "content" : { }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      },
+      "patch" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        },
+        "callbacks" : { }
+      }
+    },
+    "missing/" : { },
+    "/book/{author/{title}" : { }
+  },
+  "components" : {
+    "schemas" : {
+      "ArrayOfArrays" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/ArrayWithNoItemsType"
+        }
+      },
+      "With SpaceInName" : {
+        "type" : "object"
+      },
+      "Cool" : {
+        "type" : "object"
+      },
+      "ArrayWithNoItemsType" : {
+        "type" : "array",
+        "items" : { }
+      },
+      "With#Inva!idName" : {
+        "type" : "object"
+      },
+      "InvalidReference" : {
+        "$ref" : "#/components/schemas/DoesNotExist"
+      },
+      "InvalidRefInProperties" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "$ref" : "#/components/schemas/Cooly"
+          }
+        }
+      },
+      "SelfReference" : {
+        "$ref" : "#/components/schemas/SelfReference"
+      },
+      "IncompleteArrayType" : {
+        "type" : "array",
+        "properties" : {
+          "CHGTS" : {
+            "maxLength" : 26,
+            "type" : "string",
+            "description" : "Change Timestamp",
+            "format" : "date-time",
+            "x-column" : "CHGTS"
+          },
+          "SCCMNT" : {
+            "maxLength" : 60,
+            "type" : "string",
+            "description" : "Comment",
+            "x-column" : "SCCMNT"
+          },
+          "SCCTRL" : {
+            "maxLength" : 5,
+            "type" : "integer",
+            "description" : "Control",
+            "x-column" : "SCCTRL"
+          },
+          "SCSEQ" : {
+            "maxLength" : 3,
+            "type" : "integer",
+            "description" : "Sequence Number",
+            "x-column" : "SCSEQ"
+          },
+          "SCISYY" : {
+            "maxLength" : 2,
+            "type" : "integer",
+            "description" : "Issue Year",
+            "x-column" : "SCISYY"
+          }
+        },
+        "x-pfname" : "SHIPCMNT",
+        "x-fieldSchemaNameType" : "Short",
+        "x-library" : "SHIPDM02",
+        "x-host" : "Development"
+      },
+      "WithMany Err" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/SelfReference"
+        }
+      },
+      "ArrayWithProperties" : {
+        "type" : "array",
+        "properties" : { },
+        "description" : "Array has properties when its shouldn't",
+        "items" : {
+          "$ref" : "#/components/schemas/Self Reference"
+        }
+      }
+    },
+    "responses" : { },
+    "parameters" : {
+      "title" : {
+        "name" : "title",
+        "in" : "query",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "requestBodies" : {
+      "new120" : { }
+    },
+    "callbacks" : { }
+  }
+}

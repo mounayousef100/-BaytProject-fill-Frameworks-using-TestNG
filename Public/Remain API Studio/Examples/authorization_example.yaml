@@ -1,0 +1,1762 @@
+{
+  "openapi" : "3.0.2",
+  "info" : {
+    "title" : "Authorization Example",
+    "description" : "OpenAPI uses the term security scheme for authentication and authorization schemes. OpenAPI 3.0 lets you describe APIs protected using the following security schemes:\r\n*HTTP authentication schemes (they use the Authorization header):\r\n**Basic\r\n**Bearer\r\n\r\nother HTTP schemes as defined by RFC 7235 and HTTP Authentication Scheme Registry\r\n* API keys in headers, query string or cookies\r\n* Cookie authentication\r\n* OAuth 2\r\n* OpenID Connect Discovery",
+    "termsOfService" : "",
+    "contact" : {
+      "name" : "",
+      "url" : "https://developer.example.com/help",
+      "email" : "example@example.com"
+    },
+    "license" : {
+      "name" : "",
+      "url" : ""
+    },
+    "version" : "3.4",
+    "x-apisguru-categories" : [ "entertainment" ],
+    "x-logo" : {
+      "url" : "https://twitter.com/vimeo/profile_image?size=original"
+    },
+    "x-origin" : [ {
+      "converter" : {
+        "url" : "https://github.com/lucybot/api-spec-converter",
+        "version" : "2.7.18"
+      },
+      "format" : "openapi",
+      "url" : "https://raw.githubusercontent.com/vimeo/openapi/master/api.yaml",
+      "version" : "3.0"
+    } ],
+    "x-providerName" : "vimeo.com"
+  },
+  "servers" : [ {
+    "url" : "https://api.example.com",
+    "description" : "Authentication and Authorization"
+  } ],
+  "security" : [ {
+    "oauth2" : [ "create", "delete", "edit", "email", "interact", "private", "promo_codes", "public", "purchase", "purchased", "stats", "upload", "video_files" ]
+  } ],
+  "paths" : {
+    "/categories" : {
+      "get" : {
+        "tags" : [ "Categories\\Essentials" ],
+        "summary" : "Get all categories",
+        "description" : "Get a collection of every top-level category.",
+        "operationId" : "get_categories",
+        "parameters" : [ {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "last_video_featured_time", "name" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The categories were returned.",
+            "content" : {
+              "application/vnd.vimeo.category+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/category"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}" : {
+      "get" : {
+        "tags" : [ "Categories\\Essentials" ],
+        "summary" : "Get a specific category",
+        "operationId" : "get_category",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "The name of the category.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "animation"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The category was returned.",
+            "content" : {
+              "application/vnd.vimeo.category+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/category"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "If category was not found.",
+            "content" : {
+              "application/vnd.vimeo.category+json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}/channels" : {
+      "get" : {
+        "tags" : [ "Categories\\Channels" ],
+        "summary" : "Get all the channels in a category",
+        "operationId" : "get_category_channels",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "The name of the category.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "animation"
+          }
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "query",
+          "in" : "query",
+          "description" : "The search query to use to filter the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "Stop motion"
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "alphabetical", "date", "followers", "videos" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The channels were returned.",
+            "content" : {
+              "application/vnd.vimeo.channel+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "If category was not found.",
+            "content" : {
+              "application/vnd.vimeo.channel+json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}/groups" : {
+      "get" : {
+        "tags" : [ "Categories\\Groups" ],
+        "summary" : "Get all the groups in a category",
+        "operationId" : "get_category_groups",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "The name of the category.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "animation"
+          }
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "query",
+          "in" : "query",
+          "description" : "The search query to use to filter the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "Stop motion"
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "alphabetical", "date", "members", "videos" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The groups were returned.",
+            "content" : {
+              "application/vnd.vimeo.group+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "If category was not found.",
+            "content" : {
+              "application/vnd.vimeo.group+json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}/videos" : {
+      "get" : {
+        "tags" : [ "Categories\\Videos" ],
+        "summary" : "Get all the videos in a category",
+        "operationId" : "get_category_videos",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "The name of the category.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "animation"
+          }
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "filter",
+          "in" : "query",
+          "description" : "The attribute by which to filter the results.\n\nOption descriptions:\n * `conditional_featured` - Featured (promoted) videos\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "conditional_featured", "embeddable" ]
+          }
+        }, {
+          "name" : "filter_embeddable",
+          "in" : "query",
+          "description" : "Whether to filter by all embeddable videos or by all videos that not embeddable. Required only if **filter** is `embeddable`.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "query",
+          "in" : "query",
+          "description" : "The search query to use to filter the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "Stop motion"
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "alphabetical", "comments", "date", "duration", "featured", "likes", "plays", "relevant" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The videos were returned.",
+            "content" : {
+              "application/vnd.vimeo.video+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "If category was not found.",
+            "content" : {
+              "application/vnd.vimeo.video+json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{category}/videos/{video_id}" : {
+      "get" : {
+        "tags" : [ "Categories\\Videos" ],
+        "summary" : "Check for a video in a category",
+        "operationId" : "check_category_for_video",
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "path",
+          "description" : "The name of the category.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "example" : "animation"
+          }
+        }, {
+          "name" : "video_id",
+          "in" : "path",
+          "description" : "The ID of the video.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 273576296
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The video belongs to the category.",
+            "content" : {
+              "application/vnd.vimeo.video+json" : { }
+            }
+          },
+          "404" : {
+            "description" : "There are two ways that this status code can be encountered:\n * If category was not found.\n * If video was not found in the category.",
+            "content" : {
+              "application/vnd.vimeo.video+json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/ondemand/pages/{ondemand_id}/videos" : {
+      "get" : {
+        "tags" : [ "On Demand\\Videos" ],
+        "summary" : "Get all the videos on an On Demand page",
+        "operationId" : "get_vod_videos",
+        "parameters" : [ {
+          "name" : "ondemand_id",
+          "in" : "path",
+          "description" : "The ID of the On Demand.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 61326
+          }
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "filter",
+          "in" : "query",
+          "description" : "The attribute by which to filter the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "all", "buy", "expiring_soon", "extra", "main", "main.viewable", "rent", "trailer", "unwatched", "viewable", "watched" ]
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "date", "default", "episode", "manual", "name", "purchase_time", "release_date" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "There are two ways that this status code can be encountered:\n * The videos were returned.\n * The videos were returned.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.video+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/likes/{video_id}" : {
+      "get" : {
+        "tags" : [ "Likes\\Essentials" ],
+        "summary" : "Check if a user has liked a video",
+        "operationId" : "check_if_user_liked_video",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        }, {
+          "name" : "video_id",
+          "in" : "path",
+          "description" : "The ID of the video.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 258684937
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The user has liked the video."
+          },
+          "404" : {
+            "description" : "The user hasn't liked the video.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Likes\\Essentials" ],
+        "summary" : "Cause a user to like a video",
+        "operationId" : "like_video",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        }, {
+          "name" : "video_id",
+          "in" : "path",
+          "description" : "The ID of the video.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 258684937
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The video was liked."
+          },
+          "400" : {
+            "description" : "The authenticated user owns the video.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "403" : {
+            "description" : "The authenticated user can't like videos.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "interact" ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "Likes\\Essentials" ],
+        "summary" : "Cause a user to unlike a video",
+        "operationId" : "unlike_video",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        }, {
+          "name" : "video_id",
+          "in" : "path",
+          "description" : "The ID of the video.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 258684937
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The video was unliked."
+          },
+          "403" : {
+            "description" : "The authenticated user can't like videos.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "interact" ]
+        } ]
+      }
+    },
+    "/users/{user_id}/ondemand/pages" : {
+      "get" : {
+        "tags" : [ "On Demand\\Essentials" ],
+        "summary" : "Get all the On Demand pages of a user",
+        "operationId" : "get_user_vods",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        }, {
+          "name" : "direction",
+          "in" : "query",
+          "description" : "The sort direction of the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "example" : "asc",
+            "enum" : [ "asc", "desc" ]
+          }
+        }, {
+          "name" : "filter",
+          "in" : "query",
+          "description" : "The type of On Demand pages to return.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "film", "series" ]
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "The way to sort the results.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "added", "alphabetical", "date", "modified_time", "name", "publish.time", "rating" ]
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The On Demand pages were returned.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.page+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "If user was not found.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.page+json" : { }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "On Demand\\Essentials" ],
+        "summary" : "Create an On Demand page",
+        "operationId" : "create_vod",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "content_rating", "description", "name", "type" ],
+                "type" : "object",
+                "properties" : {
+                  "accepted_currencies" : {
+                    "type" : "string",
+                    "description" : "An array of accepted currencies.\n\nOption descriptions:\n * `AUD` - Australian Dollar\n * `CAD` - Canadian Dollar\n * `CHF` - Swiss Franc\n * `DKK` - Danish Krone\n * `EUR` - Euro\n * `GBP` - British Pound\n * `JPY` - Japanese Yen\n * `KRW` - South Korean Won\n * `NOK` - Norwegian Krone\n * `PLN` - Polish Zloty\n * `SEK` - Swedish Krona\n * `USD` - US Dollar\n",
+                    "enum" : [ "AUD", "CAD", "CHF", "DKK", "EUR", "GBP", "JPY", "KRW", "NOK", "PLN", "SEK", "USD" ]
+                  },
+                  "buy" : {
+                    "type" : "object",
+                    "properties" : {
+                      "active" : {
+                        "type" : "boolean",
+                        "description" : "Whether the Buy action is active. *Required if `rent.active` is false."
+                      },
+                      "download" : {
+                        "type" : "boolean",
+                        "description" : "Whether people who buy the video can download it. To use this field, `type` must be `film`."
+                      },
+                      "price" : {
+                        "type" : "object",
+                        "properties" : {
+                          "AUD" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in AUD.",
+                            "example" : 2.99
+                          },
+                          "CAD" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in CAD.",
+                            "example" : 2.99
+                          },
+                          "CHF" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in CHF.",
+                            "example" : 2.99
+                          },
+                          "DKK" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in DKK.",
+                            "example" : 2.99
+                          },
+                          "EUR" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in EUR.",
+                            "example" : 2.99
+                          },
+                          "GBP" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in GBP.",
+                            "example" : 2.99
+                          },
+                          "JPY" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in JPY.",
+                            "example" : 2.99
+                          },
+                          "KRW" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in KRW.",
+                            "example" : 2.99
+                          },
+                          "NOK" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in NOK.",
+                            "example" : 2.99
+                          },
+                          "PLN" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in PLN.",
+                            "example" : 2.99
+                          },
+                          "SEK" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in SEK.",
+                            "example" : 2.99
+                          },
+                          "USD" : {
+                            "type" : "number",
+                            "description" : "The purchase price of this video in USD when `type` is `film`, or the purchase price of the entire collection in USD when `type` is `series`.",
+                            "example" : 2.99
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "content_rating" : {
+                    "type" : "string",
+                    "description" : "One or more ratings, either as a comma-separated list or as a JSON array depending on the request format.",
+                    "enum" : [ "drugs", "language", "nudity", "safe", "unrated", "violence" ]
+                  },
+                  "description" : {
+                    "type" : "string",
+                    "description" : "The description of the On Demand page.",
+                    "example" : "DARBY FOREVER follows the fantasies of Darby, a shopgirl at \"Bobbins & Notions\"."
+                  },
+                  "domain_link" : {
+                    "type" : "string",
+                    "description" : "The custom domain of the On Demand page.",
+                    "example" : "https://example.com"
+                  },
+                  "episodes" : {
+                    "type" : "object",
+                    "properties" : {
+                      "buy" : {
+                        "type" : "object",
+                        "properties" : {
+                          "active" : {
+                            "type" : "boolean",
+                            "description" : "Whether episodes can be bought."
+                          },
+                          "download" : {
+                            "type" : "boolean",
+                            "description" : "Whether people who buy the episode can download it. To use this field, `type` must be `series`."
+                          },
+                          "price" : {
+                            "type" : "object",
+                            "properties" : {
+                              "USD" : {
+                                "type" : "number",
+                                "description" : "The purchase price per episode. *Required if `episodes.buy.active` is true.",
+                                "example" : 1.99
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "rent" : {
+                        "type" : "object",
+                        "properties" : {
+                          "active" : {
+                            "type" : "boolean",
+                            "description" : "Whether episodes can be rented"
+                          },
+                          "period" : {
+                            "type" : "string",
+                            "description" : "The period in which this episode can be rented for.",
+                            "enum" : [ "1 week", "1 year", "24 hour", "3 month", "30 day", "48 hour", "6 month", "72 hour" ]
+                          },
+                          "price" : {
+                            "type" : "object",
+                            "properties" : {
+                              "USD" : {
+                                "type" : "number",
+                                "description" : "The default price to rent an episode. This field is applicable only when `type` is `series`. *Required if `episodes.rent.active` is true.",
+                                "example" : 0.99
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "link" : {
+                    "type" : "string",
+                    "description" : "The custom string to use in this On Demand page's Vimeo URL.",
+                    "example" : "darbyforever"
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "description" : "The name of the On Demand page.",
+                    "example" : "Darby Forever"
+                  },
+                  "rent" : {
+                    "type" : "object",
+                    "properties" : {
+                      "active" : {
+                        "type" : "boolean",
+                        "description" : "Whether the video can be rented. *Required if `buy.active` is false."
+                      },
+                      "period" : {
+                        "type" : "string",
+                        "description" : "The period in which this can be rented for.",
+                        "enum" : [ "1 week", "1 year", "24 hour", "3 month", "30 day", "48 hour", "6 month", "72 hour" ]
+                      },
+                      "price" : {
+                        "type" : "object",
+                        "properties" : {
+                          "AUD" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in AUD.",
+                            "example" : 0.99
+                          },
+                          "CAD" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in CAD.",
+                            "example" : 0.99
+                          },
+                          "CHF" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in CHF.",
+                            "example" : 0.99
+                          },
+                          "DKK" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in DKK.",
+                            "example" : 0.99
+                          },
+                          "EUR" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in EUR.",
+                            "example" : 0.99
+                          },
+                          "GBP" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in GBP.",
+                            "example" : 0.99
+                          },
+                          "JPY" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in JPY.",
+                            "example" : 0.99
+                          },
+                          "KRW" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in KRW.",
+                            "example" : 0.99
+                          },
+                          "NOK" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in NOK.",
+                            "example" : 0.99
+                          },
+                          "PLN" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in PLN.",
+                            "example" : 0.99
+                          },
+                          "SEK" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in SEK.",
+                            "example" : 0.99
+                          },
+                          "USD" : {
+                            "type" : "number",
+                            "description" : "The rental price of this video in USD when `type` is `film`, or the rental price of the entire collection in USD when `type` is `series`.",
+                            "example" : 0.99
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "subscription" : {
+                    "type" : "object",
+                    "properties" : {
+                      "monthly" : {
+                        "type" : "object",
+                        "properties" : {
+                          "active" : {
+                            "type" : "boolean",
+                            "description" : "Whether monthly subscription is active. *Required if `rent.active` and `buy.active` are false."
+                          },
+                          "price" : {
+                            "type" : "object",
+                            "properties" : {
+                              "USD" : {
+                                "type" : "number",
+                                "description" : "The monthly subscription price in USD. *Required if `subscription.active` is true.",
+                                "example" : 9.99
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "type" : {
+                    "type" : "string",
+                    "description" : "The type of On Demand page.",
+                    "enum" : [ "film", "series" ]
+                  }
+                }
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "The On Demand page was created.",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/ondemand/purchases" : {
+      "get" : {
+        "tags" : [ "On Demand\\Purchases and Rentals" ],
+        "summary" : "Check if a user has made a purchase or rental from an On Demand page",
+        "operationId" : "check_if_vod_was_purchased",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "You have purchased the On Demand page.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.page+json" : { }
+            }
+          },
+          "403" : {
+            "description" : "The requested user is not the same as the authenticated user.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.page+json" : { }
+            }
+          },
+          "404" : {
+            "description" : "There are two ways that this status code can be encountered:\n * If user was not found.\n * If On Demand page was not found in the purchases.",
+            "content" : {
+              "application/vnd.vimeo.ondemand.page+json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "purchased" ]
+        } ]
+      }
+    },
+    "/users/{user_id}/pictures" : {
+      "get" : {
+        "tags" : [ "Users\\Pictures" ],
+        "summary" : "Get all the pictures that belong to a user",
+        "operationId" : "get_pictures",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number of the results to show.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 1
+          }
+        }, {
+          "name" : "per_page",
+          "in" : "query",
+          "description" : "The number of items to show on each page of results, up to a maximum of 100.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number",
+            "example" : 10
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The pictures were returned.",
+            "content" : {
+              "application/vnd.vimeo.picture+json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : { }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Users\\Pictures" ],
+        "summary" : "Add a user picture",
+        "operationId" : "create_picture",
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The user picture was created.",
+            "content" : {
+              "application/vnd.vimeo.picture+json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "upload" ]
+        } ]
+      }
+    },
+    "/users/{user_id}/pictures/{portraitset_id}" : {
+      "get" : {
+        "tags" : [ "Users\\Pictures" ],
+        "summary" : "Get a specific user picture",
+        "operationId" : "get_picture",
+        "parameters" : [ {
+          "name" : "portraitset_id",
+          "in" : "path",
+          "description" : "The ID of the picture.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 12345
+          }
+        }, {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The picture was returned.",
+            "content" : {
+              "application/vnd.vimeo.picture+json" : { }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Users\\Pictures" ],
+        "summary" : "Delete a user picture",
+        "operationId" : "delete_picture",
+        "parameters" : [ {
+          "name" : "portraitset_id",
+          "in" : "path",
+          "description" : "The ID of the picture.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 12345
+          }
+        }, {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The picture was deleted."
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "delete" ]
+        } ]
+      },
+      "patch" : {
+        "tags" : [ "Users\\Pictures" ],
+        "summary" : "Edit a user picture",
+        "operationId" : "edit_picture",
+        "parameters" : [ {
+          "name" : "portraitset_id",
+          "in" : "path",
+          "description" : "The ID of the picture.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 12345
+          }
+        }, {
+          "name" : "user_id",
+          "in" : "path",
+          "description" : "The ID of the user.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "number",
+            "example" : 152184
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/vnd.vimeo.picture+json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "active" : {
+                    "type" : "boolean",
+                    "description" : "Whether the picture is the user's active portrait."
+                  }
+                }
+              }
+            }
+          },
+          "required" : false
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The picture was edited.",
+            "content" : {
+              "application/vnd.vimeo.picture+json" : { }
+            }
+          }
+        },
+        "security" : [ {
+          "oauth2" : [ "edit" ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "activity-3-1" : {
+        "title" : "Activity 3.1",
+        "required" : [ "clip", "metadata", "time", "type" ],
+        "type" : "object",
+        "properties" : {
+          "category" : {
+            "description" : "The category that this event occurred for. This will be preset for only \"category\" activity types."          
+          },
+          "clip" : {
+            "description" : "Video associated with ths activity."            
+          },
+          "metadata" : {
+            "required" : [ "connections" ],
+            "type" : "object",
+            "properties" : {
+              "connections" : {
+                "required" : [ "related" ],
+                "type" : "object",
+                "properties" : {
+                  "related" : {
+                    "required" : [ "options", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "options" : {
+                        "type" : "array",
+                        "description" : "An array of HTTP methods permitted on this URI.",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The API URI that resolves to the connection data.",
+                        "example" : "/users/152184/activities?offset=20"
+                      }
+                    },
+                    "description" : "Related content for this activity.",
+                    "nullable" : true
+                  }
+                },
+                "description" : "A list of resource URIs related to the activity."
+              }
+            },
+            "description" : "The activity's metadata."
+          },
+          "time" : {
+            "type" : "string",
+            "description" : "Time that the event occurred.",
+            "example" : "2017-05-17T17:46:09+00:00"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "Activity type",
+            "example" : "appearance",
+            "enum" : [ "appearance", "category", "channel", "facebook_feed", "group", "like", "ondemand", "share", "tag", "twitter_timeline", "upload" ]
+          }
+        }
+      },
+      "api-app" : {
+        "title" : "API App",
+        "required" : [ "name", "uri" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the API app.",
+            "example" : "Vimeo Android"
+          },
+          "uri" : {
+            "type" : "string",
+            "description" : "The canonical URI of the API app.",
+            "example" : "/apps/12345"
+          }
+        }
+      },
+      "auth" : {
+        "title" : "Auth",
+        "required" : [ "access_token", "app", "scope", "token_type" ],
+        "type" : "object",
+        "properties" : {
+          "access_token" : {
+            "type" : "string",
+            "description" : "The access token string.",
+            "example" : "01019a4a62aec63db077317ab7bb429db75652401e"
+          },
+          "app" : {
+            "description" : "The API application associated with the token.",
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/api-app"
+            } ]
+          },
+          "expires_on" : {
+            "type" : "string",
+            "description" : "The date and time that the token expires.",
+            "example" : "1495048954"
+          },
+          "refresh_token" : {
+            "type" : "string",
+            "description" : "The refresh token string.",
+            "example" : "3d3bc8a9cb7debfd01b270e419b2d265983362f9"
+          },
+          "scope" : {
+            "type" : "string",
+            "description" : "The scope or scopes that the token supports.",
+            "example" : "private create edit upload public"
+          },
+          "token_type" : {
+            "type" : "string",
+            "description" : "The token type:\n\nOption descriptions:\n * `bearer` - The token is of the `bearer` type.\n",
+            "example" : "bearer",
+            "enum" : [ "bearer" ]
+          }
+        }
+      },
+      "category" : {
+        "title" : "Category",
+        "required" : [ "last_video_featured_time", "link", "metadata", "name", "parent", "pictures", "resource_key", "top_level", "uri" ],
+        "type" : "object",
+        "properties" : {
+          "icon" : {
+            "description" : "The active icon for the category."
+          },
+          "last_video_featured_time" : {
+            "type" : "string",
+            "description" : "The last time, in ISO 8601 format, that a video was featured.",
+            "example" : "2017-05-17T17:46:09+00:00"
+          },
+          "link" : {
+            "type" : "string",
+            "description" : "The URL to access the category in a browser.",
+            "example" : "https://vimeo.com/categories/animation"
+          },
+          "metadata" : {
+            "required" : [ "connections", "interactions" ],
+            "type" : "object",
+            "properties" : {
+              "connections" : {
+                "required" : [ "channels", "groups", "users", "videos" ],
+                "type" : "object",
+                "properties" : {
+                  "channels" : {
+                    "required" : [ "options", "total", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "options" : {
+                        "type" : "array",
+                        "description" : "An array of HTTP methods permitted on this URI.",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "total" : {
+                        "type" : "number",
+                        "description" : "The total number of channels on this connection.",
+                        "example" : 90
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The API URI that resolves to the connection data.",
+                        "example" : "/categories/animation/channels"
+                      }
+                    },
+                    "description" : "Information about the channels related to this category."
+                  },
+                  "groups" : {
+                    "required" : [ "options", "total", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "options" : {
+                        "type" : "array",
+                        "description" : "An array of HTTP methods permitted on this URI.",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "total" : {
+                        "type" : "number",
+                        "description" : "The total number of groups on this connection.",
+                        "example" : 15
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The API URI that resolves to the connection data.",
+                        "example" : "/categories/animation/groups"
+                      }
+                    },
+                    "description" : "Information about the groups related to this category."
+                  },
+                  "users" : {
+                    "required" : [ "options", "total", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "options" : {
+                        "type" : "array",
+                        "description" : "An array of HTTP methods permitted on this URI.",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "total" : {
+                        "type" : "number",
+                        "description" : "The total number of users on this connection.",
+                        "example" : 140
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The API URI that resolves to the connection data.",
+                        "example" : "/categories/animation/videos"
+                      }
+                    },
+                    "description" : "Information about the users related to this category."
+                  },
+                  "videos" : {
+                    "required" : [ "options", "total", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "options" : {
+                        "type" : "array",
+                        "description" : "An array of HTTP methods permitted on this URI.",
+                        "items" : {
+                          "type" : "string"
+                        }
+                      },
+                      "total" : {
+                        "type" : "number",
+                        "description" : "The total number of videos on this connection.",
+                        "example" : 960
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The API URI that resolves to the connection data.",
+                        "example" : "/categories/animation/videos"
+                      }
+                    },
+                    "description" : "Information about the videos related to this category."
+                  }
+                },
+                "description" : "A collection of information that is connected to this resource."
+              },
+              "interactions" : {
+                "required" : [ "follow" ],
+                "type" : "object",
+                "properties" : {
+                  "follow" : {
+                    "required" : [ "added", "added_time", "uri" ],
+                    "type" : "object",
+                    "properties" : {
+                      "added" : {
+                        "type" : "boolean",
+                        "description" : "Whether the authenticated user has followed this category."
+                      },
+                      "added_time" : {
+                        "type" : "string",
+                        "description" : "The time in ISO 8601 format that the user followed this category, or the null value if the user hasn't followed this category.",
+                        "nullable" : true,
+                        "example" : "2017-05-17T17:46:09+00:00"
+                      },
+                      "uri" : {
+                        "type" : "string",
+                        "description" : "The URI for following or unfollowing this category: PUT to this URI to follow the category, or DELETE to this URI to unfollow the category.",
+                        "example" : "/users/152184/categories/animation"
+                      }
+                    },
+                    "description" : "An action indicating if the authenticated user has followed this category."
+                  }
+                },
+                "description" : "The permissible actions related to the category."
+              }
+            },
+            "description" : "Metadata about the category."
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The display name that identifies the category.",
+            "example" : "Animation"
+          },
+          "parent" : {
+            "required" : [ "link", "name", "uri" ],
+            "type" : "object",
+            "properties" : {
+              "link" : {
+                "type" : "string",
+                "description" : "The URL to access the parent category in a browser.",
+                "example" : "https://vimeo.com/categories/animation"
+              },
+              "name" : {
+                "type" : "string",
+                "description" : "The display name that identifies the parent category.",
+                "example" : "Animation"
+              },
+              "uri" : {
+                "type" : "string",
+                "description" : "The unique identifier to access the parent of this category resource.",
+                "example" : "/categories/animation"
+              }
+            },
+            "description" : "The container of this category's parent category, if the current category is a subcategory.",
+            "nullable" : true
+          },
+          "pictures" : {
+            "description" : "The active picture for this category; defaults to vertical color bars."
+          },
+          "resource_key" : {
+            "type" : "string",
+            "description" : "The resource key of the category.",
+            "example" : "e5595241643259c658ed6c85ca82985a6341edc7"
+          },
+          "subcategories" : {
+            "type" : "array",
+            "description" : "All the subcategories that belong to this category, if the current category is a top-level parent.",
+            "items" : {
+              "required" : [ "link", "name", "uri" ],
+              "type" : "object",
+              "properties" : {
+                "link" : {
+                  "type" : "string",
+                  "description" : "The URL to access the subcategory in a browser.",
+                  "example" : "https://vimeo.com/categories/animation/2d/videos"
+                },
+                "name" : {
+                  "type" : "string",
+                  "description" : "The display name that identifies the subcategory.",
+                  "example" : "2D"
+                },
+                "uri" : {
+                  "type" : "string",
+                  "description" : "The unique identifier to access the subcategory resource.",
+                  "example" : "/categories/animation/subcategories/2d"
+                }
+              }
+            }
+          },
+          "top_level" : {
+            "type" : "boolean",
+            "description" : "Whether the category is not a subcategory of another category."
+          },
+          "uri" : {
+            "type" : "string",
+            "description" : "The unique identifier to access the category resource.",
+            "example" : "/categories/animation"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "bearer"
+      },
+      "oauth2" : {
+        "type" : "oauth2",
+        "flows" : {
+          "clientCredentials" : {
+            "tokenUrl" : "/oauth/authorize/client",
+            "scopes" : {
+              "create" : "Create new albums, channels, and so on",
+              "delete" : "Delete videos, albums, channels, and so on",
+              "edit" : "Edit existing videos, albums, channels, and so on",
+              "email" : "Access to email addresses",
+              "interact" : "Interact with Vimeo resources on a member's behalf, such as liking a video or following another member",
+              "private" : "Access private member data",
+              "promo_codes" : "Add, remove, and review Vimeo On Demand promotions",
+              "public" : "Access public member data",
+              "purchase" : "Purchase content",
+              "purchased" : "Access a member's Vimeo On Demand purchase history",
+              "stats" : "Access video stats",
+              "upload" : "Upload videos",
+              "video_files" : "Access video files belonging to members with a PRO subscription or higher"
+            }
+          },
+          "authorizationCode" : {
+            "authorizationUrl" : "/oauth/authorize",
+            "tokenUrl" : "/oauth/access_token",
+            "scopes" : {
+              "create" : "Create new albums, channels, and so on",
+              "delete" : "Delete videos, albums, channels, and so on",
+              "edit" : "Edit existing videos, albums, channels, and so on",
+              "email" : "Access to email addresses",
+              "interact" : "Interact with Vimeo resources on a member's behalf, such as liking a video or following another member",
+              "private" : "Access private member data",
+              "promo_codes" : "Add, remove, and review Vimeo On Demand promotions",
+              "public" : "Access public member data",
+              "purchase" : "Purchase content",
+              "purchased" : "Access a member's Vimeo On Demand purchase history",
+              "stats" : "Access video stats",
+              "upload" : "Upload videos",
+              "video_files" : "Access video files belonging to members with a PRO subscription or higher"
+            }
+          }
+        }
+      }
+    }
+  }
+}

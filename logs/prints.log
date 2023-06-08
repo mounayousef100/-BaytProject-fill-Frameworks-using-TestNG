@@ -1,0 +1,101 @@
+02:08:51.616 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+02:09:42.804 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+02:20:07.506 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+02:20:53.231 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+02:22:14.964 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+02:22:54.214 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+02:26:12.875 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+02:27:52.851 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+02:30:13.370 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+02:30:23.792 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+08:49:42.633 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+08:51:25.447 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+08:52:23.164 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+08:54:16.657 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+08:57:29.677 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+08:58:45.976 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+09:01:26.066 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+09:02:37.312 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+09:05:04.754 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+09:08:16.691 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+09:08:48.493 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+09:11:39.897 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+09:14:40.428 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+09:16:14.215 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+09:17:47.514 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+09:17:48.659 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+09:18:03.008 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+10:07:30.571 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+10:09:04.245 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+10:09:04.622 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+10:09:11.221 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+10:09:12.422 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+10:09:27.275 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+10:13:28.083 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+10:14:58.595 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+10:14:58.936 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+10:15:04.919 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+10:15:06.168 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+10:15:20.643 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+10:48:18.952 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+10:50:01.342 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+10:50:01.967 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+10:50:09.569 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+10:50:11.348 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+10:50:29.650 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+13:03:54.771 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+13:05:18.073 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+13:05:18.427 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+13:05:41.029 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+13:05:42.289 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+13:05:57.430 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+13:13:04.356 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+13:14:25.127 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+13:14:25.607 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+13:14:31.588 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+13:14:32.902 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+13:14:46.620 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+13:20:07.966 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+13:20:08.968 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+13:20:22.475 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+13:25:09.253 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+13:27:00.326 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+13:27:11.545 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+13:27:17.551 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+13:27:41.178 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+13:32:52.221 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+13:34:16.606 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+13:34:16.967 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+13:34:23.811 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+13:34:24.692 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+13:34:38.478 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+15:05:59.974 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+15:07:39.691 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+15:07:40.052 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+15:07:47.859 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+15:07:48.964 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+15:08:11.656 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+15:26:16.081 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+15:28:00.683 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+15:28:01.219 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+15:28:08.482 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+15:28:09.902 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+15:28:26.163 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+16:18:07.008 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+16:20:13.769 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+16:20:14.183 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+16:20:20.507 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+16:20:21.551 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+16:20:38.740 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+16:46:57.043 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+16:49:48.725 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+16:49:49.172 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+16:49:57.440 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+16:49:59.281 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+16:50:35.801 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic
+17:00:00.404 [main] DEBUG com.Bayt.HomeTest.FooterTest - Navigated to application URL
+17:02:24.010 [main] DEBUG com.Bayt.HomeTest.FooterTest - clicked on About Us
+17:02:24.401 [main] DEBUG com.Bayt.HomeTest.FooterTest - Browser got closed
+17:02:32.571 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to logo
+17:02:33.832 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to FindJobs
+17:02:56.401 [main] DEBUG com.Bayt.HomePageOpject.HomeHeaderAsGuestPage - Navigated to Arabic

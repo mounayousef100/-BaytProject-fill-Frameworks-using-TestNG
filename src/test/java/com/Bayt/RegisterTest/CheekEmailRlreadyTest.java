@@ -1,4 +1,4 @@
-package com.Bayt.RegisterandApplyTest;
+package com.Bayt.RegisterTest;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.Bayt.Base.Base;
-import com.Bayt.RegisterandApplyPageObject.CheekEmailRlready;
+import com.Bayt.RegisterPageObject.CheekEmailRlready;
 
 public class CheekEmailRlreadyTest extends Base {
 	public WebDriver driver;
@@ -25,7 +25,7 @@ public class CheekEmailRlreadyTest extends Base {
 	}
 
 	@Test
-	public void EasyApply() throws IOException, InterruptedException {
+	public void EasyApply() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		cheekEmailRlready = new CheekEmailRlready(driver);
 		cheekEmailRlready.CheekEmailRlread();

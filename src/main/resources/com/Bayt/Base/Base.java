@@ -13,13 +13,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
-	 public Properties prop ;
+	 public static Properties prop ;
 	 public static WebDriver driver ;
-	   public WebDriver intializEDriver()throws IOException { 
+	   public static WebDriver intializEDriver()throws IOException { 
 		   prop = new Properties();
 		   String propPath = System.getProperty("user.dir")+ "\\Configuration\\data.properties";
 		   FileInputStream file = new FileInputStream(propPath);
@@ -44,7 +43,7 @@ public class Base {
 	       return driver;	  	 
  }
 	   
-	   public static void takeScreenshot(String testName ,WebDriver driver) throws IOException {
+	/*   public static void takeScreenshot(String testName ,WebDriver driver) throws IOException {
 		   Date currentDate = new  Date ();
 		   String TheAcutalData = currentDate.toString().replace(":","-");
 		   TakesScreenshot src = ((TakesScreenshot)driver);
@@ -54,16 +53,18 @@ public class Base {
 		 
 	   }
 	      
-
+*/
           //assign the current title to string title
          
          
 	   
-	/*   public void takeScreenshot(String testName ,WebDriver driver) throws Exception{
+	 public void takeScreenshot(String testName ,WebDriver driver) throws Exception{
+		    Date currentDate = new  Date ();
+		    String TheAcutalData = currentDate.toString().replace(":","-");
 	        File scrShot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	        String  DestFilePath = System.getProperty("user.dir")+".//screenshots//"+testName+".png";         
+	        String  DestFilePath = System.getProperty("user.dir")+".//screenshots//"+testName+TheAcutalData+".png";         
 	         FileUtils.copyFile(scrShot,new File( DestFilePath ));
 	        // return DestFilePath ;
-	    } */
-	
+	    }
+
 }
